@@ -1,3 +1,35 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-content>
+        <ion-list id="inbox-list">
+          <ion-list-header>        
+            <ion-avatar>
+              <img alt="imagen" src="http://test2.sevensingenieros.com/dist/svg/logo_cip.svg" />
+            </ion-avatar>
+            Colegio de Ingenieros             
+          </ion-list-header>
+          <ion-note>secretaria@ciptarapoto.com</ion-note>
+
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+        <ion-list id="labels-list">
+          <ion-list-header>Intranet</ion-list-header>
+
+          <ion-item routerDirection="root" [routerLink]="[labels[1]]" lines="none" detail="false" routerLinkActive="selected">
+            <ion-icon slot="start" [ios]="labels[2] + '-outline'" [md]="labels[2] + '-sharp'"></ion-icon>
+            <ion-label>{{ labels[0] }}</ion-label>
+          </ion-item>
+          
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
 </ion-app>

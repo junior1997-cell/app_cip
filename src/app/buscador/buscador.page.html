@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="mycolor">
+    <ion-buttons slot="start">
+      <ion-menu-button class="text-white"></ion-menu-button>
+    </ion-buttons>
+    <!-- <ion-title>{{ buscador }}</ion-title> -->
+    <ion-title>Buscador</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Lista de colegiados</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let user of users">
+      <ion-avatar class="m-r-10px">
+        <img src="{{user.hosting}}{{user.foto}}" onerror="this.src = 'http://test2.sevensingenieros.com/dist/svg/user_default.svg'" >
+      </ion-avatar>
+      <ion-label>
+        <h3>{{user.nombres_y_apellidos}}</h3>
+        <h5>CIP: {{user.codigo_cip}}</h5>
+        <p>{{user.especialidad}}</p>        
+         <ion-button color="{{(user.estado == 't' ? 'success': 'danger' ) }}">{{(user.estado == 't' ? 'HABILITADO': 'NO HABILITADO' ) }}</ion-button> 
+        <ion-button class="btn-info"><ion-icon name="eye-outline"></ion-icon></ion-button>
+      </ion-label>
+    </ion-item>     
+    
+    
+  </ion-list>
+</ion-content>
+
